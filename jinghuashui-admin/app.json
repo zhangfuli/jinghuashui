@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/add/add",
+    "pages/check/check",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "usingComponents": {
+      "i-button": "dist/button/index"
+    },
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "borderStyle": "black ",
+    "list": [
+      {
+        "pagePath": "pages/add/add",
+        "text": "添加用户",
+        "iconPath": "./images/add.png",
+        "selectedIconPath":"./images/add-active.png"
+      },
+      {
+        "pagePath": "pages/check/check",
+        "text": "查看用户",
+        "iconPath": "./images/check.png",
+        "selectedIconPath":"./images/check-active.png"
+      }
+    ]
+  }
+ 
+
+}
+
