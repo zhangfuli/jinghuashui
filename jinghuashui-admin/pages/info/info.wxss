@@ -1,0 +1,13 @@
+.purifier{
+    display: block;
+}
+.detail-address{
+    position:relative;
+    padding:12px 15px;
+    display:flex;
+    background:#fff;
+    align-items:center;
+    font-size:14px;
+    overflow:hidden;
+    color:#495060;
+}

@@ -1,16 +1,14 @@
 {
   "pages":[
-
-    "pages/add/add",
     "pages/check/check",
-    "pages/logs/logs",
-    "pages/test/test"
+    "pages/add/add",
 
+    "pages/logs/logs",
+    "pages/pay/pay",
+    "pages/info/info",
+    "pages/test/test"
   ],
   "window":{
-    "usingComponents": {
-      "i-button": "dist/button/index"
-    },
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
@@ -31,6 +29,18 @@
         "text": "查看用户",
         "iconPath": "./images/check.png",
         "selectedIconPath":"./images/check-active.png"
+      },
+      {
+        "pagePath": "pages/pay/pay",
+        "text": "付款",
+        "iconPath": "./images/pay.png",
+        "selectedIconPath":"./images/pay-active.png"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "我的",
+        "iconPath": "./images/info.png",
+        "selectedIconPath":"./images/info-active.png"
       }
     ]
   }

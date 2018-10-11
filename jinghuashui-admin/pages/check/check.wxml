@@ -1,2 +1,15 @@
 <!--pages/check/check.wxml-->
-<text>pages/check/check.wxml</text>
+<include src="../../wxSearchView/wxSearchView.wxml" />
+<i-grid wx:if="{{hide}}">
+    <i-grid-item i-class="item">
+        <i-spin custom>加载中...</i-spin>
+    </i-grid-item>
+</i-grid>
+<view wx:if="{{!hide}}">
+    <i-card title="张富利" extra="17777777777" thumb="" full="true">
+        <view slot="content">南京大学</view>
+        <view slot="footer">
+            江苏省-南京市-栖霞区
+        </view>
+    </i-card>
+</view>

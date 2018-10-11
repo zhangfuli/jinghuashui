@@ -7,7 +7,9 @@ const weapp = {
       "i-radio": "../../dist/radio/index",
       "i-action-sheet": "../../dist/action-sheet/index",
       "i-row": "../../dist/row/index",
-      "i-col": "../../dist/col/index"
+      "i-col": "../../dist/col/index",
+      "i-spin": "../../dist/spin/index",
+      "i-card": "../../dist/card/index"
   }
 }
 module.exports = {

@@ -1,2 +1,1 @@
-/* pages/check/check.wxss */
 @import "../../wxSearchView/wxSearchView.wxss";

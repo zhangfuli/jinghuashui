@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="">
+    <i-panel title="基本信息">
+        <i-input value="{{ name }}" title="姓名" autofocus placeholder="名字"  right="true"/>
+        <i-input value="{{ name }}" title="工号" autofocus placeholder="工号"  right="true"/>
+        <i-input value="{{ phone }}" type="number" title="联系电话" placeholder="请输入手机号"  right="true"/>
+        <i-action-sheet visible="{{ visible1 }}" actions="{{ purifier }}" show-cancel bind:cancel="choosePurifierCancel" bind:click="choosePurifierClick"  right="true"/>
+        <i-row>
+            <i-col span="8">
+                <p class="detail-address">地址</p>
+            </i-col>
+            <i-col span="16">
+                <i-region bind:getRegion="getRegion"></i-region>
+            </i-col>
+        </i-row>
+    </i-panel>
+    <i-button type="success" bind:click="handleClick">编辑</i-button>
+</view>
+
