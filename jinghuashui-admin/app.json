@@ -1,8 +1,11 @@
 {
   "pages":[
+
     "pages/add/add",
     "pages/check/check",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/test/test"
+
   ],
   "window":{
     "usingComponents": {

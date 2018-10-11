@@ -1,56 +1,53 @@
 //index.js
-//获取应用实例
+var util = require('../../utils/util.js');
 
 const app = getApp()
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
- 
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-        url: '../logs/logs'
-    })
-
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+    data: {
+        name:'',
+        phone:'',
+        address:'',
+        type:'',
+        visible1: false,
+        purifier: [{
+                name: '通电',
+            }, {
+                name: '未通电'
+            }],
+        region:[],
+        time:["2018","01","01"],
+    },
+    onLoad: function () {    // 调用函数时，传入new Date()参数，返回值是日期和时间
+        var time = util.formatTime(new Date());    // 再通过setData更改Page()里面的data，动态更新页面的数据
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+            time: time
+        });
+    },
+    choosePurifierOpen(){
+      this.setData({
+          visible1: true
+      });
+    },
+    choosePurifierCancel () {
+        this.setData({
+            visible1: false
+        });
+    },
+    choosePurifierClick({ detail }){
+        const index = detail.index + 1;
+        console.log('点击了选项' + index)
+        if(index == 1){
+            this.setData({
+                type: '通电'
+            });
+        }else if(index == 2){
+            this.setData({
+                type: '不通电'
+            });
         }
-      })
+        this.choosePurifierCancel()
+    },
+    getRegion(eventDetail){
+        console.log(eventDetail)
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 })

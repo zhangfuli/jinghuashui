@@ -1,13 +1,11 @@
-.purifier{
-  display: block;
-}
-.detail-address{
-  position:relative;
+.tui-picker-content{
   padding:12px 15px;
-  display:flex;
+}
+.tui-picker-detail{
   background:#fff;
   align-items:center;
   font-size:14px;
   overflow:hidden;
   color:#495060;
+  text-align: right;
 }
