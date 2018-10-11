@@ -9,7 +9,9 @@ const weapp = {
       "i-row": "../../dist/row/index",
       "i-col": "../../dist/col/index",
       "i-spin": "../../dist/spin/index",
-      "i-card": "../../dist/card/index"
+      "i-card": "../../dist/card/index",
+      "i-collapse": "../../dist/collapse/index",
+      "i-collapse-item": "../../dist/collapse-item/index"
   }
 }
 module.exports = {
