@@ -7,6 +7,8 @@
     "i-radio": "../../dist/radio/index",
     "i-action-sheet": "../../dist/action-sheet/index",
     "i-row": "../../dist/row/index",
-    "i-col": "../../dist/col/index"
+    "i-col": "../../dist/col/index",
+    "i-card": "../../dist/card/index",
+    "i-toast": "../../dist/toast/index"
   }
 }

@@ -13,3 +13,5 @@
         </i-collapse-item>
     </i-collapse>
 </view>
+<button class="login"  wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+</button>

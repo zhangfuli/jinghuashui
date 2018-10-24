@@ -1,11 +1,13 @@
 {
   "pages":[
+
+    "pages/info/info",
+    "pages/order/order",
     "pages/check/check",
     "pages/add/add",
-
+    "pages/index/index",
     "pages/logs/logs",
     "pages/pay/pay",
-    "pages/info/info",
     "pages/test/test"
   ],
   "window":{
@@ -31,10 +33,10 @@
         "selectedIconPath":"./images/check-active.png"
       },
       {
-        "pagePath": "pages/pay/pay",
-        "text": "付款",
-        "iconPath": "./images/pay.png",
-        "selectedIconPath":"./images/pay-active.png"
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "./images/order.png",
+        "selectedIconPath":"./images/order-active.png"
       },
       {
         "pagePath": "pages/info/info",

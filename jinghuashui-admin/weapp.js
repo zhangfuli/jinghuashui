@@ -11,7 +11,11 @@ const weapp = {
       "i-spin": "../../dist/spin/index",
       "i-card": "../../dist/card/index",
       "i-collapse": "../../dist/collapse/index",
-      "i-collapse-item": "../../dist/collapse-item/index"
+      "i-collapse-item": "../../dist/collapse-item/index",
+      "i-cell-group": "../../dist/cell-group/index",
+      "i-cell": "../../dist/cell/index",
+      "i-avatar": "../../dist/avatar/index",
+      "i-toast": "../../dist/toast/index"
   }
 }
 module.exports = {

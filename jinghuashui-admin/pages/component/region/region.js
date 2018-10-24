@@ -1,6 +1,9 @@
 Component({
-    data: {
-        region: ["北京市", "北京市", "东城区"],
+    properties: {
+        region: {
+            type: Array,
+            value: ["北京市", "北京市", "东城区"]
+        }
     },
     methods:{
         // 选择省市区函数

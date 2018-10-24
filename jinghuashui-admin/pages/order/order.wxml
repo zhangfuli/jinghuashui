@@ -1,0 +1,25 @@
+<view class="caption-wrap">
+    <i-card  wx:for="{{record}}"
+             title="{{item.year}}-{{item.month}}-{{item.day}}您提供了{{item.servicename}}服务" extra="￥{{item.serviceprice}}" thumb="" full="true">
+        <view slot="content">
+            {{item.username}}
+        </view>
+        <view slot="footer">
+            <view>
+                业主联系方式: {{item.userphone}}
+            </view>
+            <view>
+                业主住址:{{item.userprovince}}-{{item.usercity}}-{{item.userregion}}
+            </view>
+            <view>
+                {{item.useraddress}}
+            </view>
+            <view>
+                {{item.useraddress}}
+            </view>
+        </view>
+    </i-card>
+</view>
+<i-toast id="toast" />
+<button class="login"  wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+</button>

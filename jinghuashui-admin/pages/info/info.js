@@ -1,66 +1,129 @@
 // pages/info/info.js
+var util = require('../../utils/util.js');
+const {$Toast} = require('../../dist/base/index');
+const app = getApp()
+
 Page({
+    data: {
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+        btnhide: true,
+        name: "",
+        phone: "",
+        province: "",
+        city: "",
+        region: [],
+        card: ""
+    },
 
-  },
+    onLoad: function (options) {
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true
+            })
+            this.getUser()
+        } else if (this.data.canIUse) {
+            app.userInfoReadyCallback = res => {
+                this.setData({
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                })
+                this.getUser()
+            }
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+        } else {
+            wx.getUserInfo({
+                success: res => {
+                    app.globalData.userInfo = res.userInfo
+                    this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
+                    this.getUser()
+                }
+            })
+        }
 
-  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+    },
+    getRegion(eventDetail) {
+        console.log(eventDetail)
+        this.data.region = eventDetail.detail
+    },
+    getUserInfo: function (e) {
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
+        this.getUser()
+    },
+    edit() {
+        var that = this
+        this.setData({
+            btnhide: !that.data.btnhide
+        })
+    },
+    save() {
+        var that = this
+        wx.request({
+            url: app.globalData.URL + "worker/saveWorker",
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST",
+            data: util.json2Form({
+                name: that.data.name,
+                phone: that.data.phone,
+                province: that.data.region[0],
+                city: that.data.region[1],
+                region: that.data.region[2],
+                wxname: that.data.userInfo.nickName,
+                card: that.data.card
+            }),
+            complete: function (res) {
+                if (res == null || res.data == null) {
+                    $Toast({
+                        content: '网络请求失败',
+                        type: 'error'
+                    });
+                    return;
+                } else {
+                    $Toast({
+                        content: '提交成功',
+                        type: 'success'
+                    });
+                    that.setData({
+                        btnhide: !that.data.btnhide
+                    })
+                }
+            }
+        })
+    },
+    getUser() {
+        var that = this
+        wx.request({
+            url: app.globalData.URL + "worker/findByWxname?wxname=" + that.data.userInfo.nickName,
+            complete: function (res) {
+                if (res == null || res.data == null) {
+                    $Toast({
+                        content: '网络请求失败',
+                        type: 'error'
+                    });
+                    return;
+                } else {
+                    app.globalData.user = res.data;
+                    that.setData({
+                        name: res.data.name,
+                        phone: res.data.phone,
+                        card: res.data.card,
+                        region: [res.data.province, res.data.city, res.data.region]
+                    })
+                }
+            }
+        })
+    }
 })
