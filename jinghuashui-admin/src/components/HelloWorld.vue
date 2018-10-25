@@ -25,7 +25,7 @@
           },
           {
             title: '上次换芯时间',
-            key: 'finalTime',
+            key: 'lastservice',
             sortable: true
           }
         ],
@@ -40,7 +40,6 @@
         var self = this
         self.$http.post(API.URL + "user/findAll",{}, {emulateJSON: true})
           .then((response) => {
-            console.log(response.body)
               self.user = response.body
             for (let i in response.body) {
               self.user[i] = response.body[i];
@@ -49,13 +48,9 @@
                 + response.body[i].city + "市"
                 + response.body[i].region + "区"
                 + response.body[i].address;
-              // self.user[i].finalTime =
-              //   response.body[i].year + "年"
-              //   + response.body[i].month + "月"
-              //   + response.body[i].day + "日";
-
-
-
+              if(response.body[i].lastservice == null){
+                self.user[i].lastservice = '无记录'
+              }
             }
           })
       }
