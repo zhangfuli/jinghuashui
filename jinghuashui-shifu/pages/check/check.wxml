@@ -1,0 +1,78 @@
+<!--pages/check/check.wxml-->
+<view>
+    <include src="../../wxSearchView/wxSearchView.wxml"/>
+    <view wx:if="{{content}}">
+        <i-grid wx:if="{{hide}}">
+            <i-grid-item i-class="item">
+                <i-spin custom>加载中...</i-spin>
+            </i-grid-item>
+        </i-grid>
+        <view wx:else>
+            <view wx:for="{{reservation}}" wx:key="item">
+                <view class="card">
+                    <i-card title="{{item.name}}" extra="{{item.servicename}}">
+                        <view slot="content">
+                            <view>
+                                业主联系方式:{{item.phone}}
+                            </view>
+                            <view>
+                                预约时间:{{item.year}}-{{item.month}}-{{item.day}}
+                            </view>
+                            <view>
+                                业主地址:{{item.province}}-{{item.city}}-{{item.region}}
+                            </view>
+                            <view>
+                                {{item.address}}
+                            </view>
+                            <view>
+                                <view wx:if="{{item.ispay == 1}}">
+                                    支付状态: 已支付
+                                </view>
+                                <view wx:else>
+                                    支付状态: 未支付, 需支付{{item.serviceprice}}
+                                </view>
+                            </view>
+                        </view>
+                        <view slot="footer" style="color:red">
+                            *请确认业主信息
+                            <i-button wx:if="{{item.ispay == 1 && item.isservice == 0}}"
+                                      type="success"
+                                      bind:click = "confirmservice"
+                                      data-price="{{item.isservice}}"
+                                      data-reservationid="{{item.id}}"
+                                      data-serviceid="{{item.serviceid}}"
+
+                            >已支付, 请提交本次服务</i-button>
+                            <i-button wx:elif="{{item.ispay == 1 && item.isservice == 1}}" type="warning">已支付, 已服务</i-button>
+                            <i-button wx:elif="{{item.ispay == 0 && item.isservice == 1}}"
+                                      type="success"
+                                      bind:click = "confirmmoney"
+                                      data-price="{{item.isservice}}"
+                                      data-reservationid="{{item.id}}"
+                                      data-serviceid="{{item.serviceid}}"
+                            >未支付, 已服务</i-button>
+                            <i-button wx:else type="success"
+                                      bind:click="confirm"
+                                      data-price="{{item.isservice}}"
+                                      data-reservationid="{{item.id}}"
+                                      data-serviceid="{{item.serviceid}}"
+
+                            >未支付, 请提交本次服务</i-button>
+
+                            <modal title="￥{{item.serviceprice}}" confirm-text="已支付" cancel-text="未支付" hidden="{{modalHidden1}}" bindconfirm="pay" bindcancel="cancel" data-id="{{item.serviceid}}"  data-reservationid="{{item.id}}">
+                                <image class="image" mode="aspectFit" src="../../images/erweima.png"></image>
+                            </modal>
+                            <modal title="￥{{item.serviceprice}}" confirm-text="已支付" cancel-text="未支付" hidden="{{modalHidden2}}" bindconfirm="pay" bindcancel="cancel" data-id="{{item.serviceid}}"  data-reservationid="{{item.id}}">
+                                <image class="image" mode="aspectFit" src="../../images/erweima.png"></image>
+                            </modal>
+                        </view>
+                    </i-card>
+                </view>
+
+            </view>
+        </view>
+    </view>
+    <i-toast id="toast"/>
+    <button class="login" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    </button>
+</view>
