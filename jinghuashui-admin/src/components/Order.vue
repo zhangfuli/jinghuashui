@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Table border :columns="columns" :data="reservation"></Table>
+    <Table border :columns="columns" :data="reservation" ref="table"></Table>
   </div>
 </template>
 <script>
@@ -11,7 +11,11 @@
       return {
         columns: [
           {
-            title: '姓名',
+            title: '序号',
+            type: 'index'
+          },
+          {
+            title: '业主姓名',
             key: 'name',
             sortable: true
           },
@@ -50,41 +54,34 @@
                     size: 'small',
                     dataId: this.reservation[params.index].id
                   },
-                  style: {
-                    marginRight: '5px'
-                  },
                   on: {
                     click: () => {
                       this.pay(`${this.reservation[params.index].id}`)
                     }
                   }
                 }, `${this.reservation[params.index].finalIsPay}`),
-                // h('Button', {
-                //   props: {
-                //     type: 'error',
-                //     size: 'small'
-                //   },
-                //   on: {
-                //     click: () => {
-                //       this.remove(params.index)
-                //     }
-                //   }
-                // }, `${this.reservation[params.index].finalIsService}`)
               ]);
             }
-          }
+          },
+          {
+            title: '状态',
+            key: 'finalIsService',
+            sortable: true
+          },
         ],
         reservation: []
       }
     },
     mounted() {
       this.getReservation()
+
     },
     methods: {
       getReservation() {
         this.$http.get(API.URL + "reservation/findAllInfo", {emulateJSON: true})
           .then((response) => {
             this.reservation = response.body
+            console.log(response.body)
             for (let i in response.body) {
               this.reservation[i] = response.body[i];
               this.reservation[i].finalAddress =
@@ -98,10 +95,12 @@
                 + response.body[i].day + "日";
 
               this.reservation[i].finalIsPay = response.body[i].ispay == 1 ? "已支付" : "未支付";
-              this.reservation[i].finalIsService = response.body[i].isservice == 1 ? "已服务" : "未服务";
-
+              this.reservation[i].finalIsService = response.body[i].isservice == 1 ?
+                response.body[i].workercard + "号师傅服务" :
+                "未服务";
             }
           })
+
       },
       pay(index) {
         var self = this
@@ -117,7 +116,7 @@
                 },
                 {emulateJSON: true}
               ).then((response) => {
-                if(response.body.id == index){
+                if (response.body.id == index) {
                   self.$Message.info('支付成功');
                   self.getReservation()
                 }
@@ -125,6 +124,18 @@
             }
           }
 
+        }
+      },
+      exportData (type) {
+        if (type === 1) {
+          this.$refs.table.exportCsv({
+            filename: '原始用户表'
+          });
+        } else if (type === 2) {
+          this.$refs.table.exportCsv({
+            filename: '排序后的用户表',
+            original: false
+          });
         }
       }
     }

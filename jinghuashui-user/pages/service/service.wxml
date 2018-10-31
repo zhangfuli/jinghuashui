@@ -1,0 +1,49 @@
+<!--pages/service/service.wxml-->
+<view class='service-container'>
+  <view class='userlist'>
+    <view class='image-container'>
+      <image src='../../images/gonggao.png' class='gonggao-image'></image>
+    </view>
+    <swiper class="swiper_container" autoplay="true" circular="true" interval="0" duration="800">
+      <block wx:for="{{userList}}">
+        <swiper-item class='slide'>
+          <view class="swiper_item">用户{{item}}已预约</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='swiper'>
+    <swiper class='swiper-img' indicator-dots="true" indicator-active-color="#FFFFFF" indicator-color="rgba(255, 255, 255, .3)" circular="true">
+      <block wx:for="{{imgList}}">
+        <swiper-item>
+          <image src='{{item}}' class='devices-img'>
+          </image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='details'>
+    <view class='details-up'>
+      <view class='details-up-left'>
+        <view class="details-up-up">
+          {{name}}更换服务（{{cnt}}次）
+        </view>
+        <view class='details-up-down'>
+          {{userCnt}}人预约
+        </view>
+      </view>
+      <view class='details-up-right'>
+        <view class="details-up-up">
+          <p style="font-family: PingFang-SC-Medium;font-size: 14px;color: #17B963;letter-spacing: 0;">￥</p>{{price}}
+        </view>
+        <view class='details-up-down'>
+          地区：{{city}}
+        </view>
+      </view>
+    </view>
+    <view class='details-bottom'>
+     {{details}}
+    </view>
+  </view>
+  <button class='book' bindtap='book'>{{isBooked? '已预约':'预约'}}</button>
+</view>

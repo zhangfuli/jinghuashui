@@ -1,4 +1,5 @@
 // pages/check/check.js
+//抢单
 var WxSearch = require('../../wxSearchView/wxSearchView.js');
 var util = require('../../utils/util.js');
 const {$Toast} = require('../../dist/base/index');
@@ -10,9 +11,10 @@ Page({
         hide: false,
         content: false,
         reservation: [],
-        modalHidden1: true,
-        modalHidden2: true,
-        phone: ""
+        modalHidden: true,
+        phone: "",
+        reservationid:"",
+        serviceprice: ""
     },
     wxSearchInput: WxSearch.wxSearchInput,  // 输入变化时的操作
     wxSearchKeyTap: WxSearch.wxSearchKeyTap,  // 点击提示或者关键字、历史记录时的操作
@@ -32,13 +34,16 @@ Page({
             workername: app.globalData.user.name
         })
     },
-
-
+    onPullDownRefresh: function(){
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        this.getAllInfo()
+    },
+    onShow(){
+        this.getAllInfo()
+    },
     //搜索回调函数
     mySearchFunction: function (value) {
         this.setData({
-            hide: !this.data.hide,
-            content: !this.data.content,
             phone: value
         })
         var that = this
@@ -69,196 +74,110 @@ Page({
                             reservation: []
                         })
                     }
-
                 }
             }
         })
     },
     myGobackFunction: function () {
-        //把所有数据清空
         this.setData({
-            hide: false,
-            content: false,
             reservation: []
         })
+        this.getAllInfo()
     },
-    confirm(event) {
+    getAllInfo(){
         var that = this
-        this.setData({
-            modalHidden2: false,
-        })
-        var reservationid = event.currentTarget.dataset.reservationid
-        wx.request({
-            url: app.globalData.URL + "reservation/service",
-            header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST",
-            data: util.json2Form({
-                reservationid: reservationid,
-                workerid: app.globalData.user.id
-            }),
-            complete: function (res) {
-                if (res == null || res.data == null) {
-                    $Toast({
-                        content: '网络请求失败',
-                        type: 'error'
-                    });
-                    return;
-                }
-            }
-        })
-    },
-    confirmmoney(){
-        var that = this
-        this.setData({
-            modalHidden1: false,
-        })
-    },
-    confirmservice(event){
-        var that = this
-        var reservationid = event.currentTarget.dataset.reservationid
+        if(app.globalData.user){
+            wx.request({
+                url: app.globalData.URL + "reservation/findAllInfo",
+                complete: function (res) {
+                    console.log(res)
+                    wx.hideNavigationBarLoading()
+                    wx.stopPullDownRefresh()
+                    if (res == null || res.data == null) {
+                        $Toast({
+                            content: '网络请求失败',
+                            type: 'error'
+                        });
 
+                        return;
+                    } else {
+                        if (res.data.code != 0) {
+                            for(let index in res.data){
+                                res.data[index].finalName = res.data[index].name.substring(0,1) +
+                                    (res.data[index].type == '男'? '先生':'女士')
+                                if(res.data[index].workercard == null){
+                                    res.data[index].workercard = ''
+                                }
+                            }
+                            that.setData({
+                                reservation: res.data,
+                            })
+                        } else {
+                            that.setData({
+                                reservation: []
+                            })
+                        }
+
+                    }
+                }
+            })
+        }else{
+            $Toast({
+                content: '请先登录',
+                type: 'warning'
+            });
+        }
+    },
+    //抢单
+    grab(event){
+        var reservationid = event.currentTarget.dataset.reservationid
+        var that = this
         wx.request({
-            url: app.globalData.URL + "reservation/service",
+            url: app.globalData.URL + "reservation/setworker",
             header: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             method: "POST",
             data: util.json2Form({
-                reservationid: reservationid,
-                workerid: app.globalData.user.id
+                workercard: app.globalData.user.card,
+                reservationid: reservationid
             }),
             complete: function (res) {
-                if (res == null || res.data == null) {
+                console.log(res)
+                that.onPullDownRefresh()
+                if(res.data){
                     $Toast({
-                        content: '网络请求失败',
-                        type: 'error'
-                    });
-                    return;
-                }else{
-                    $Toast({
-                        content: '提交成功',
+                        content: '抢单成功',
                         type: 'success'
                     });
-                    wx.request({
-                        url: app.globalData.URL + "reservation/findByUserPhone?phone=" + that.data.phone,
-                        complete: function (res) {
-                            if (res == null || res.data == null) {
-                                $Toast({
-                                    content: '网络请求失败',
-                                    type: 'error'
-                                });
-                                return;
-                            } else {
-                                if (res.data.code != 0) {
-                                    that.setData({
-                                        reservation: res.data,
-                                    })
-                                } else {
-                                    that.setData({
-                                        hide: false,
-                                        content: false,
-                                        reservation: []
-                                    })
-                                }
-
-                            }
-                        }
-                    })
+                }else{
+                    $Toast({
+                        content: '网络请求失败',
+                        type: 'error'
+                    });
                 }
             }
         })
     },
-    cancel(){
+    getUser() {
         var that = this
-        this.setData({
-            modalHidden2: true,
-            modalHidden1: true
-        });
-        $Toast({
-            content: '未支付',
-            type: 'error'
-        });
         wx.request({
-            url: app.globalData.URL + "reservation/findByUserPhone?phone=" + that.data.phone,
+            url: app.globalData.URL + "worker/findByWxname?wxname=" + that.data.userInfo.nickName,
             complete: function (res) {
-                if (res == null || res.data == null) {
+                if (res == null || res.data == null || res.data == "") {
                     $Toast({
-                        content: '网络请求失败',
+                        content: '未注册用户请注册',
                         type: 'error'
                     });
                     return;
                 } else {
-                    if (res.data.code != 0) {
-                        that.setData({
-                            reservation: res.data,
-                        })
-                    } else {
-                        that.setData({
-                            hide: false,
-                            content: false,
-                            reservation: []
-                        })
-                    }
-
-                }
-            }
-        })
-    },
-    pay(e){
-        var that = this
-        var reservationid = e.target.dataset.reservationid
-        console.log(e)
-        wx.request({
-            url: app.globalData.URL + "reservation/pay",
-            header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST",
-            data: util.json2Form({
-                reservationid: reservationid,
-            }),
-            complete: function (res) {
-                console.log(res)
-                if (res.data.code == -1) {
-                    $Toast({
-                        content: '网络请求失败',
-                        type: 'error'
-                    });
-                    return;
-                }else{
-                    that.cancel()
-                    $Toast({
-                        content: '支付成功',
-                        type: 'success'
-                    });
-                    wx.request({
-                        url: app.globalData.URL + "reservation/findByUserPhone?phone=" + that.data.phone,
-                        complete: function (res) {
-                            if (res == null || res.data == null) {
-                                $Toast({
-                                    content: '网络请求失败',
-                                    type: 'error'
-                                });
-                                return;
-                            } else {
-                                if (res.data.code != 0) {
-                                    that.setData({
-                                        reservation: res.data,
-                                    })
-                                } else {
-                                    that.setData({
-                                        hide: false,
-                                        content: false,
-                                        reservation: []
-                                    })
-                                }
-
-                            }
-                        }
+                    app.globalData.user = res.data;
+                    that.setData({
+                        name: res.data.name,
+                        phone: res.data.phone,
+                        card: res.data.card,
+                        region: [res.data.province, res.data.city, res.data.region]
                     })
-                    return;
                 }
             }
         })

@@ -11,9 +11,9 @@ Page({
         type:'',
         visible1: false,
         purifier: [{
-                name: '通电',
+                name: '男',
             }, {
-                name: '未通电'
+                name: '女'
             }],
         region:["北京市", "北京市", "东城区"],
         time:["2018","01","01"],
@@ -71,11 +71,11 @@ Page({
         const index = detail.index + 1;
         if(index == 1){
             this.setData({
-                type: '通电'
+                type: '男'
             });
         }else if(index == 2){
             this.setData({
-                type: '不通电'
+                type: '女'
             });
         }
         this.choosePurifierCancel()
@@ -144,6 +144,7 @@ Page({
             },
             method: "POST",
             data: util.json2Form({
+                userid: "",
                 name: that.data.name,
                 phone: that.data.phone,
                 province: that.data.region[0],
@@ -151,9 +152,10 @@ Page({
                 region: that.data.region[2],
                 address: that.data.address,
                 type: that.data.type,
-                wxname: that.data.wxname
+                wxname: ""
             }),
             complete: function (res) {
+                console.log(res)
                 if (res == null || res.data == null) {
                     $Toast({
                         content: '网络请求失败',
@@ -165,6 +167,16 @@ Page({
                         content: '提交成功',
                         type: 'success'
                     });
+                    that.setData({
+                        name: "",
+                        phone: "",
+                        province: "",
+                        city: "",
+                        region: "",
+                        address: "",
+                        type: "",
+                        wxname: ""
+                    })
                 }
             }
         })

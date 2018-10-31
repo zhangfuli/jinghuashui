@@ -1,8 +1,10 @@
 <view class="caption-wrap">
     <i-card  wx:for="{{record}}"
-             title="{{item.year}}-{{item.month}}-{{item.day}}您提供了{{item.servicename}}服务" extra="￥{{item.serviceprice}}" thumb="" full="true">
+             title="{{item.servicename}}"
+             extra="￥{{item.serviceprice}}" style="margin:20px">
         <view slot="content">
-            {{item.username}}
+            <view>服务时间: {{item.year}}-{{item.month}}-{{item.day}}</view>
+            <view>服务对象: {{item.finalName}}</view>
         </view>
         <view slot="footer">
             <view>

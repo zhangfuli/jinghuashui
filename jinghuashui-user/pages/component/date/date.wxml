@@ -1,0 +1,8 @@
+
+<view class="tui-picker-content">
+    <picker bindchange="changeRegion" mode = "date" value="{{time}}">
+        <view class="tui-picker-detail">{{time[0]}} - {{time[1]}} - {{time[2]}}</view>
+    </picker>
+</view>
+
+

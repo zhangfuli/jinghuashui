@@ -17,7 +17,6 @@ Page({
         region: [],
         card: ""
     },
-
     onLoad: function (options) {
         if (app.globalData.userInfo) {
             this.setData({
@@ -33,7 +32,6 @@ Page({
                 })
                 this.getUser()
             }
-
         } else {
             wx.getUserInfo({
                 success: res => {
@@ -46,7 +44,6 @@ Page({
                 }
             })
         }
-
     },
     getName: function(e){
         this.setData({
@@ -100,6 +97,7 @@ Page({
                 card: that.data.card
             }),
             complete: function (res) {
+                console.log(res)
                 if (res == null || res.data == null) {
                     $Toast({
                         content: '网络请求失败',
@@ -111,6 +109,7 @@ Page({
                         content: '提交成功',
                         type: 'success'
                     });
+                    that.getUser()
                     that.setData({
                         btnhide: !that.data.btnhide,
                     })

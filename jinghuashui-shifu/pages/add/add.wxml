@@ -3,9 +3,9 @@
   <i-panel title="基本信息">
     <i-input value="{{name}}" title="业主姓名"   placeholder="名字"  right="true" bind:change="getName" maxlength="10"/>
 
-    <i-input value="{{phone}}" type="number" title="联系电话" placeholder="请输入手机号"  bind:change="getPhone" right="true" maxlength="100"/>
+    <i-input value="{{phone}}" type="number" title="联系电话" placeholder="请输入手机号"  bind:change="getPhone" right="true" maxlength="11"/>
 
-    <i-input value="{{ type }}"  title="净水器类型" placeholder="请选择净水器类型"  bindtap="choosePurifierOpen" disabled class="purifier"  right="true"></i-input>
+    <i-input value="{{ type }}"  title="性别" placeholder="性别"  bindtap="choosePurifierOpen" disabled class="purifier"  right="true"></i-input>
 
     <i-action-sheet visible="{{ visible1 }}" actions="{{ purifier }}" show-cancel bind:cancel="choosePurifierCancel" bind:click="choosePurifierClick"  right="true"/>
 
@@ -21,14 +21,6 @@
       <i-input value="{{ address }}" placeholder="请输入详细地址(最多50字)" maxlength="50"  bind:change="getAddress" right="true"/>
     </i-panel>
 
-    <!--<i-row>-->
-      <!--<i-col span="8">-->
-        <!--<p class="detail-address">换芯时间</p>-->
-      <!--</i-col>-->
-      <!--<i-col span="16">-->
-        <!--<i-date time="{{time}}" bind:getRegion="getRegion"></i-date>-->
-      <!--</i-col>-->
-    <!--</i-row>-->
 
   </i-panel>
   <i-button type="success" open-type="getUserInfo" bindgetuserinfo="getUserInfo" bindtap="postData">提交</i-button>

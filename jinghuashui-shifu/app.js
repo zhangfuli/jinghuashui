@@ -34,7 +34,7 @@ App({
     })
   },
   globalData: {
-      URL: "http://47.99.175.99:8080/",
+      URL: "https://zflxsr.cn/",
       userInfo: null,
       user: null
   }

@@ -4,10 +4,6 @@ const {$Toast} = require('../../dist/base/index');
 const app = getApp()
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         name1: "2018-01-01",
         day:"",
@@ -16,17 +12,18 @@ Page({
         record: []
 
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+    onPullDownRefresh: function(){
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        this.onShow()
+    },
+    onShow: function () {
         var that = this;
         if (app.globalData.user) {
             wx.request({
                 url: app.globalData.URL + "record/findByWorkerid?workerid=" + app.globalData.user.id,
                 complete: function (res) {
-                    console.log(res.data)
+                    wx.hideNavigationBarLoading()
+                    wx.stopPullDownRefresh()
                     if (res == null || res.data == null) {
                         $Toast({
                             content: '网络请求失败',
@@ -40,6 +37,14 @@ Page({
                                 type: 'error'
                             });
                         }else{
+                            for(let index in res.data){
+                                console.log(res.data[index])
+                                res.data[index].finalName = res.data[index].username.substring(0,1) +
+                                    (res.data[index].usertype == '男'? '先生':'女士')
+                                if(res.data[index].workercard == null){
+                                    res.data[index].workercard = ''
+                                }
+                            }
                             that.setData({
                                 record: res.data
                             })
@@ -54,5 +59,28 @@ Page({
                 type: 'warning'
             });
         }
+    },
+    getUser() {
+        var that = this
+        wx.request({
+            url: app.globalData.URL + "worker/findByWxname?wxname=" + that.data.userInfo.nickName,
+            complete: function (res) {
+                if (res == null || res.data == null || res.data == "") {
+                    $Toast({
+                        content: '未注册用户请注册',
+                        type: 'error'
+                    });
+                    return;
+                } else {
+                    app.globalData.user = res.data;
+                    that.setData({
+                        name: res.data.name,
+                        phone: res.data.phone,
+                        card: res.data.card,
+                        region: [res.data.province, res.data.city, res.data.region]
+                    })
+                }
+            }
+        })
     }
 })

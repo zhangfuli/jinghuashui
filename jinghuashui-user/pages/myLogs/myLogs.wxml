@@ -1,0 +1,43 @@
+<!--pages/myLogs/myLogs.wxml-->
+<wxs module="filter" src="./myLogs.wxs"></wxs>
+<view>
+  <view bindtap='' class='header'>
+    <view class="animate-number">
+      累计保障时间
+      <p class="num num1">{{num1}}</p>天
+    </view>
+    <navigator class='service' url='../info/info'>
+      <image class='service-image' src='../../images/service.png'></image>
+    </navigator>
+  </view>
+  <view class='body'>
+    <view class='body-title'>
+      更多商品
+    </view>
+    <view class='devices-list'>
+      <navigator wx:for="{{devices}}" class='device' url='../service/service?userid={{info_detailes.id}}&serviceid={{item["serviceid"]}}&usercity={{info_detailes.city}}&isBooked={{item.isReservation}}&cnt={{item.count}}'>
+        <view class='device-body'>
+        <image class='device-img' src="../../images/devices.png">
+        </image>
+        <view class='device-info'>
+          <view class='device-cnt'>
+          {{item['servicename']}}({{item['count']}}次)
+          <p class='location'>
+          地区：{{info_detailes.city}}
+          </p>
+          </view>
+          <view class='change-time'>
+          上次更换时间：{{filter.changeDate(item['lasttime'])}}
+          </view>
+          <view class='price'>
+            <doller>￥</doller>{{item['serviceprice']}}
+          </view>
+        </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='warp' hidden='{{eye}}'>
+    <button open-type="getUserInfo" hover-class='none' bindgetuserinfo="getUserInfoFun">.</button>
+  </view>
+</view>

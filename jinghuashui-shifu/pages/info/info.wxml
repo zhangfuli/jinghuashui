@@ -20,7 +20,9 @@
         <view slot="content" wx:else>
             <i-panel title="">
                 <i-input value="{{ name }}" title="姓名"  placeholder="名字"  right="true" maxlength="10" bind:change="getName" autofocus />
+
                 <i-input value="{{ card }}" title="工号"  placeholder="工号"  right="true" maxlength="50" bind:change="getCard"/>
+
                 <i-input value="{{ phone }}" type="number" title="联系电话" placeholder="请输入手机号"  right="true" maxlength="11" bind:change="getPhone"/>
                 <i-action-sheet visible="{{ visible1 }}" actions="{{ purifier }}" show-cancel bind:cancel="choosePurifierCancel" bind:click="choosePurifierClick"  right="true"/>
                 <i-row>

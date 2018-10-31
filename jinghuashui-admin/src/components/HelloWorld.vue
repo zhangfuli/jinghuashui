@@ -1,16 +1,31 @@
 <template>
   <div>
-    <Table border :columns="columns" :data="user"></Table>
+    <div class="btnPosition">
+      <Button type="primary" size="large" @click="exportData(1)">
+        <Icon type="ios-download-outline"></Icon>
+        导出原始数据
+      </Button>
+      <Button type="primary" size="large" @click="exportData(2)">
+        <Icon type="ios-download-outline"></Icon>
+        导出排序后的数据
+      </Button>
+    </div>
+    <Table border :columns="columns" :data="user" ref="table"></Table>
   </div>
 </template>
 <script>
   import API from '../config/request';
+
   export default {
-    data () {
+    data() {
       return {
         columns: [
           {
-            title: '姓名',
+            title: '序号',
+            type: 'index'
+          },
+          {
+            title: '业主姓名',
             key: 'name',
             sortable: true
           },
@@ -27,20 +42,43 @@
             title: '上次换芯时间',
             key: 'lastservice',
             sortable: true
+          },
+          {
+            title: '操作',
+            key: 'operation',
+            render: (h, params) => {
+              return h('div', [
+                h('Button', {
+                  props: {
+                    type: 'primary',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: "15px"
+                  },
+                  on: {
+                    click: () => {
+                      this.reservation(`${this.user[params.index].id}`)
+                    }
+                  }
+                }, "预约滤芯")
+              ]);
+            }
           }
         ],
         user: []
       }
     },
-    mounted(){
+    mounted() {
       this.getUser()
     },
-    methods:{
-      getUser(){
+    methods: {
+      getUser() {
         var self = this
-        self.$http.post(API.URL + "user/findAll",{}, {emulateJSON: true})
+        self.$http.post(API.URL + "user/findAll", {}, {emulateJSON: true})
           .then((response) => {
-              self.user = response.body
+            self.user = response.body
+            console.log(response.body)
             for (let i in response.body) {
               self.user[i] = response.body[i];
               self.user[i].finalAddress =
@@ -48,17 +86,45 @@
                 + response.body[i].city + "市"
                 + response.body[i].region + "区"
                 + response.body[i].address;
-              if(response.body[i].lastservice == null){
+              if (response.body[i].lastservice == null) {
                 self.user[i].lastservice = '无记录'
               }
             }
+          })
+      },
+      exportData(type) {
+        if (type === 1) {
+          this.$refs.table.exportCsv({
+            filename: '原始用户表'
+          });
+        } else if (type === 2) {
+          this.$refs.table.exportCsv({
+            filename: '排序后的用户表',
+            original: false
+          });
+        }
+      },
+      reservation(index) {
+        var self = this
+        self.$http.post(API.URL + "reservation/create",
+          {
+            "userid": index,
+            "serviceid": 1
+          },
+          {emulateJSON: true})
+          .then((response) => {
+            if(response){
+              self.$Message.info('预约成功');
+            }
+
           })
       }
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .btnPosition {
+    text-align: left;
+    margin-bottom: 30px;
+  }
 </style>

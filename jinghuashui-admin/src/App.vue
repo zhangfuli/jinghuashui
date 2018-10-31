@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="../images/xiaomifeng-logo.jpg" alt="" width="300px" class="logo">
     <Menu mode="horizontal" theme="light" active-name="1">
       <router-link id="user"
                    to="/user">
@@ -13,9 +14,10 @@
                    to="/order">
         <MenuItem name="2">
           <Icon type="ios-paper"/>
-          内容管理
+          订单管理
         </MenuItem>
       </router-link>
+
     </Menu>
     <br>
     <br>
@@ -38,5 +40,8 @@
     color: #2c3e50;
     width: 90%;
     margin: 40px auto 0;
+  }
+  .logo{
+    display: block;
   }
 </style>
