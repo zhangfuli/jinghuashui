@@ -1,5 +1,8 @@
 /* pages/check/check.wxss */
 @import "../../wxSearchView/wxSearchView.wxss";
+page{
+    width:100%
+}
 .login{
     display: flex;
     width: 100%;
@@ -19,4 +22,10 @@
     width: 200px;
     height: 200px;
     margin: 0 auto;
+}
+.myGrab{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
 }

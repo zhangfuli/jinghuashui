@@ -23,4 +23,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ### 要修改的地方如下：
 ###### js、css图片路径,index.html    /static--->./static
 ###### svg引用路径，app.css   
-###### logo路径   app.js 将    ./static/img
+###### logo路径   app.js 将    删掉n.p    ./static/img

@@ -38,7 +38,6 @@ Page({
                             });
                         }else{
                             for(let index in res.data){
-                                console.log(res.data[index])
                                 res.data[index].finalName = res.data[index].username.substring(0,1) +
                                     (res.data[index].usertype == '男'? '先生':'女士')
                                 if(res.data[index].workercard == null){

@@ -1,13 +1,15 @@
 <!--pages/check/check.wxml-->
 <view>
+    <image  src="../../images/myGrab-white.png" class="myGrab"></image>
     <include src="../../wxSearchView/wxSearchView.wxml"/>
-    <view wx:if="{{reservation == [] }}">
-        您尚未完成任何订单
-    </view>
+    <!--<image wx:if="{{showNum == 0}}" src="../../images/myGrab-white.png" mode="aspectFit"></image>-->
     <view wx:for="{{reservation}}" wx:key="item">
         <view class="card" hidden="{{item.ispay == 1 && item.isservice == 1}}">
             <i-card title="{{item.finalName}}" extra="{{item.servicename}}">
-                <view slot="content">
+                <view slot="content"
+                      bindtap="tel"
+                      data-phone="{{item.phone}}"
+                >
                     <view>
                         业主联系方式:{{item.phone}}
                     </view>
@@ -37,6 +39,7 @@
                               data-price="{{item.isservice}}"
                               data-reservationid="{{item.id}}"
                               data-serviceid="{{item.serviceid}}"
+                              data-index = "{{index}}"
 
                     >已支付, 请提交本次服务
                     </i-button>
@@ -50,6 +53,8 @@
                               data-reservationid="{{item.id}}"
                               data-serviceid="{{item.serviceid}}"
                               data-serviceprice="{{item.serviceprice}}"
+                              data-index = "{{index}}"
+
                     >未支付, 已服务
                     </i-button>
 
@@ -59,6 +64,7 @@
                               data-reservationid="{{item.id}}"
                               data-serviceid="{{item.serviceid}}"
                               data-serviceprice="{{item.serviceprice}}"
+                              data-index = "{{index}}"
 
                     >未支付, 请提交本次服务
                     </i-button>
@@ -70,7 +76,7 @@
 
     <modal title="￥{{serviceprice}}" confirm-text="已支付" cancel-text="未支付" hidden="{{modalHidden}}" bindconfirm="pay"
            bindcancel="cancel" data-id="{{serviceid}}" data-reservationid="{{reservationid}}">
-        <image class="image" mode="aspectFit" src="../../images/erweima.png"></image>
+        <image class="image" mode="aspectFit" src="{{imgsrc}}" ></image>
     </modal>
 
 

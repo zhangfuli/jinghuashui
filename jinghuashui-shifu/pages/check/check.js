@@ -14,7 +14,9 @@ Page({
         modalHidden: true,
         phone: "",
         reservationid:"",
-        serviceprice: ""
+        serviceprice: "",
+        order: 0,   //限制抢单的个数
+        showNum: 0    //显示的我的抢单的数量(未支付、未服务)
     },
     wxSearchInput: WxSearch.wxSearchInput,  // 输入变化时的操作
     wxSearchKeyTap: WxSearch.wxSearchKeyTap,  // 点击提示或者关键字、历史记录时的操作
@@ -32,10 +34,13 @@ Page({
         );
         this.setData({
             workername: app.globalData.user.name
-        })
+        });
     },
     onPullDownRefresh: function(){
         wx.showNavigationBarLoading() //在标题栏中显示加载
+        this.setData({
+            order: 0
+        });
         this.getAllInfo()
     },
     onShow(){
@@ -45,8 +50,8 @@ Page({
     mySearchFunction: function (value) {
         this.setData({
             phone: value
-        })
-        var that = this
+        });
+        var that = this;
         wx.request({
             url: app.globalData.URL + "reservation/findByUserPhone?phone=" + value,
             complete: function (res) {
@@ -59,10 +64,8 @@ Page({
                 } else {
                     if (res.data.code != 0) {
                         that.setData({
-                            reservation: res.data,
-                            hide: !that.data.hide
+                            reservation: res.data
                         })
-                        console.log(res.data)
                     } else {
                         $Toast({
                             content: '用户未预约',
@@ -80,12 +83,16 @@ Page({
     },
     myGobackFunction: function () {
         this.setData({
-            reservation: []
-        })
+            reservation: [],
+            order: 0
+        });
         this.getAllInfo()
     },
     getAllInfo(){
-        var that = this
+        var that = this;
+        that.setData({
+            showNum: 0
+        });
         if(app.globalData.user){
             wx.request({
                 url: app.globalData.URL + "reservation/findAllInfo",
@@ -98,7 +105,6 @@ Page({
                             content: '网络请求失败',
                             type: 'error'
                         });
-
                         return;
                     } else {
                         if (res.data.code != 0) {
@@ -107,11 +113,18 @@ Page({
                                     (res.data[index].type == '男'? '先生':'女士')
                                 if(res.data[index].workercard == null){
                                     res.data[index].workercard = ''
+                                    if(res.data[index].isservice + res.data[index].ispay < 2){
+                                        that.setData({
+                                            showNum: that.data.showNum + 1
+                                        })
+                                    }
                                 }
+
                             }
                             that.setData({
                                 reservation: res.data,
-                            })
+                            });
+                            console.log(that.data.showNum)
                         } else {
                             that.setData({
                                 reservation: []
@@ -131,33 +144,81 @@ Page({
     //抢单
     grab(event){
         var reservationid = event.currentTarget.dataset.reservationid
-        var that = this
+        var index = event.currentTarget.dataset.index
+        var that = this;
         wx.request({
-            url: app.globalData.URL + "reservation/setworker",
-            header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST",
-            data: util.json2Form({
-                workercard: app.globalData.user.card,
-                reservationid: reservationid
-            }),
+            url: app.globalData.URL + "reservation/findbyworkercard?workercard=" + app.globalData.user.card,
             complete: function (res) {
-                console.log(res)
-                that.onPullDownRefresh()
-                if(res.data){
-                    $Toast({
-                        content: '抢单成功',
-                        type: 'success'
-                    });
-                }else{
+                if (res == null || res.data == null) {
                     $Toast({
                         content: '网络请求失败',
                         type: 'error'
                     });
+                    return;
+                } else {
+                    if (res.data.code != 0) {
+                        for(let index in res.data){
+                            if(res.data[index].workercard == app.globalData.user.card){
+                                if(res.data[index].ispay + res.data[index].isservice == 2 ? false: true){
+                                    that.setData({
+                                        order: that.data.order + 1
+                                    })
+                                }
+                            }
+                        }
+                    }
+                    //限制每个师傅只能抢10个
+                    if(that.data.order < 10){
+                        that.setData({
+                            order: 0
+                        });
+                        wx.request({
+                            url: app.globalData.URL + "reservation/setworker",
+                            header: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            method: "POST",
+                            data: util.json2Form({
+                                workercard: app.globalData.user.card,
+                                reservationid: reservationid
+                            }),
+                            complete: function (res) {
+                                //that.onPullDownRefresh();
+                                if(res.data){
+                                    $Toast({
+                                        content: '抢单成功',
+                                        type: 'success'
+                                    });
+                                    var reservation = that.data.reservation
+                                    reservation.splice(index, 1)
+                                    that.setData({
+                                        reservation: reservation,
+                                        showNum: that.data.showNum - 1
+                                    })
+                                    console.log(that.data.showNum)
+                                }else{
+                                    $Toast({
+                                        content: '网络请求失败',
+                                        type: 'error'
+                                    });
+                                }
+                            }
+                        })
+                    }else{
+                        $Toast({
+                            content: '请先完成您的抢单',
+                            type: 'error'
+                        });
+                        that.setData({
+                            order: 0
+                        });
+                    }
+
                 }
             }
         })
+
+
     },
     getUser() {
         var that = this

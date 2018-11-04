@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div class="btnPosition">
+      <Button type="primary" size="large" @click="exportData(1)">
+        <Icon type="ios-download-outline"></Icon>
+        导出原始数据
+      </Button>
+      <Button type="primary" size="large" @click="exportData(2)">
+        <Icon type="ios-download-outline"></Icon>
+        导出排序后的数据
+      </Button>
+    </div>
     <Table border :columns="columns" :data="reservation" ref="table"></Table>
   </div>
 </template>
@@ -12,7 +22,8 @@
         columns: [
           {
             title: '序号',
-            type: 'index'
+            type: 'index',
+            width: 70
           },
           {
             title: '业主姓名',
@@ -26,7 +37,8 @@
           {
             title: '地址',
             key: 'finalAddress',
-            sortable: true
+            sortable: true,
+            width: 200
           },
           {
             title: '服务名称',
@@ -68,13 +80,32 @@
             key: 'finalIsService',
             sortable: true
           },
+          {
+            title: '删除',
+            key: 'delete',
+            render: (h, params) => {
+              return h('div', [
+                h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small',
+                    dataId: this.reservation[params.index].id
+                  },
+                  on: {
+                    click: () => {
+                      this.delete(`${this.reservation[params.index].id}`, params.index)
+                    }
+                  }
+                }, "删除"),
+              ]);
+            }
+          }
         ],
         reservation: []
       }
     },
     mounted() {
       this.getReservation()
-
     },
     methods: {
       getReservation() {
@@ -95,12 +126,19 @@
                 + response.body[i].day + "日";
 
               this.reservation[i].finalIsPay = response.body[i].ispay == 1 ? "已支付" : "未支付";
-              this.reservation[i].finalIsService = response.body[i].isservice == 1 ?
-                response.body[i].workercard + "号师傅服务" :
-                "未服务";
+
+              this.reservation[i].finalIsService = '未服务'
+              if (response.body[i].workercard) {
+                this.reservation[i].finalIsService = response.body[i].workercard + '号师傅抢单'
+                if (response.body[i].isservice == 1) {
+                  this.reservation[i].finalIsService = response.body[i].workercard + '号师傅服务'
+                }
+              }
             }
           })
-
+          .catch((response) => {
+            this.$Message.info('网络请求失败');
+          })
       },
       pay(index) {
         var self = this
@@ -121,19 +159,38 @@
                   self.getReservation()
                 }
               })
+                .catch((response) => {
+                  this.$Message.info('网络请求失败');
+                })
             }
           }
-
         }
       },
-      exportData (type) {
+      delete(id, index) {
+        var self = this
+        self.$http.post(
+          API.URL + "reservation/delete",
+          {reservationid: id},
+          {emulateJSON: true}
+        ).then((response) => {
+          if (response.body.id == id) {
+            self.$Message.info('删除成功');
+            self.reservation.splice(index, 1);
+          } else {
+            self.$Message.info('删除失败');
+          }
+        }).catch((response) => {
+          this.$Message.info('网络请求失败');
+        })
+      },
+      exportData(type) {
         if (type === 1) {
           this.$refs.table.exportCsv({
-            filename: '原始用户表'
+            filename: '原始订单管理表'
           });
         } else if (type === 2) {
           this.$refs.table.exportCsv({
-            filename: '排序后的用户表',
+            filename: '排序后的订单管理表',
             original: false
           });
         }
@@ -144,5 +201,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .btnPosition {
+    text-align: left;
+    margin-bottom: 30px;
+  }
 </style>

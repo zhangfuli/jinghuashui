@@ -12,7 +12,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小蜜蜂到家",
+    "navigationBarTitleText": "小蜜蜂在家",
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh": true
   },

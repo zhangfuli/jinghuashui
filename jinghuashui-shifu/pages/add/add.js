@@ -163,20 +163,28 @@ Page({
                     });
                     return;
                 }else{
-                    $Toast({
-                        content: '提交成功',
-                        type: 'success'
-                    });
-                    that.setData({
-                        name: "",
-                        phone: "",
-                        province: "",
-                        city: "",
-                        region: "",
-                        address: "",
-                        type: "",
-                        wxname: ""
-                    })
+                    console.log(res.data.code)
+                    if(res.data.code == -1){
+                        $Toast({
+                            content: res.data.message,
+                            type: 'error'
+                        });
+                    }else{
+                        $Toast({
+                            content: '提交成功',
+                            type: 'success'
+                        });
+                        that.setData({
+                            name: "",
+                            phone: "",
+                            province: "",
+                            city: "",
+                            region: "",
+                            address: "",
+                            type: "",
+                            wxname: ""
+                        })
+                    }
                 }
             }
         })

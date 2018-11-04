@@ -1,13 +1,13 @@
 <!--pages/check/check.wxml-->
 <view>
+    <image  src="../../images/grab-white.png" class="grab"></image>
     <include src="../../wxSearchView/wxSearchView.wxml"/>
+    <!--<image wx:if="{{showNum == 0}}" mode="aspectFit" src="../../images/grab-white.png"></image>-->
+
     <view wx:for="{{reservation}}" wx:key="item">
         <view class="card" hidden="{{item.workercard}}">
             <i-card title="{{item.finalName}}" extra="{{item.servicename}}">
                 <view slot="content">
-                    <view>
-                        业主联系方式:{{item.phone}}
-                    </view>
                     <view>
                         预约时间:{{item.year}}-{{item.month}}-{{item.day}}
                     </view>
@@ -23,12 +23,13 @@
                     <i-button bind:click="grab"
                               type="warning"
                               data-reservationid="{{item.id}}"
+                              data-index="{{index}}"
+
                     >抢单</i-button>
                 </view>
             </i-card>
         </view>
     </view>
-
 
     <i-toast id="toast"/>
     <button class="login" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">

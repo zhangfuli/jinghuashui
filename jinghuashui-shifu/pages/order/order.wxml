@@ -1,4 +1,6 @@
 <view class="caption-wrap">
+    <image  src="../../images/order-white.png" class="order-background"></image>
+    <!--<image wx:if="{{record.length == 0}}" src="../../images/order-white.png" mode="aspectFit"></image>-->
     <i-card  wx:for="{{record}}"
              title="{{item.servicename}}"
              extra="￥{{item.serviceprice}}" style="margin:20px">

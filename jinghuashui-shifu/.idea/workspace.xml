@@ -45,23 +45,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="check.wxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/check/check.wxml">
+      <file leaf-file-name="myGrab.wxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-              <folding>
-                <element signature="n#style#0;n#view#1;n#i-card#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="54">
+              <caret line="2" column="61" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myGrab.wxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxml">
+      <file leaf-file-name="myGrab.wxss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="11" />
+            <state relative-caret-position="292">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -69,8 +66,8 @@
       <file leaf-file-name="order.wxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/order/order.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" selection-start-column="27" selection-end-column="27" />
+            <state relative-caret-position="27">
+              <caret line="1" column="70" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#i-card#0;n#view#0;n#!!top" expanded="true" />
               </folding>
@@ -78,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.json">
+      <file leaf-file-name="order.wxss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/order/order.wxss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="216">
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -90,8 +87,8 @@
       <file leaf-file-name="check.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/check/check.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="27">
+              <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -99,11 +96,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="check.wxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/check/check.wxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="999">
-              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+            <state relative-caret-position="54">
+              <caret line="2" column="67" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#view#1;n#i-card#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/add/add.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/add/add.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="check.wxss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/check/check.wxss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -111,35 +138,8 @@
       <file leaf-file-name="myGrab.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7911">
-              <caret line="293" column="5" selection-start-line="293" selection-start-column="5" selection-end-line="293" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/order/order.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="45" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="info.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/info/info.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/order/order.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state relative-caret-position="1755">
+              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="69" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -170,6 +170,12 @@
       <find>通电</find>
       <find>未支付</find>
       <find>支付</find>
+      <find>serviceprice</find>
+      <find>getAllInfo</find>
+      <find>console.log(11)</find>
+      <find>console.log</find>
+      <find>order</find>
+      <find>image</find>
     </findStrings>
     <replaceStrings>
       <replace>modalHidden2</replace>
@@ -198,7 +204,6 @@
         <option value="$PROJECT_DIR$/pages/pay/pay.wxml" />
         <option value="$PROJECT_DIR$/pages/pay/pay.wxss" />
         <option value="$PROJECT_DIR$/pages/info/info.wxss" />
-        <option value="$PROJECT_DIR$/pages/order/order.wxss" />
         <option value="$PROJECT_DIR$/pages/add/add.json" />
         <option value="$PROJECT_DIR$/weapp.js" />
         <option value="$PROJECT_DIR$/pages/add/add.wxss" />
@@ -207,22 +212,24 @@
         <option value="$PROJECT_DIR$/pages/component/region/region.js" />
         <option value="$PROJECT_DIR$/pages/order/order.json" />
         <option value="$PROJECT_DIR$/wxSearchView/wxSearchView.wxss" />
-        <option value="$PROJECT_DIR$/pages/check/check.wxss" />
         <option value="$PROJECT_DIR$/wxSearchView/wxSearchView.wxml" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/pages/info/info.wxml" />
         <option value="$PROJECT_DIR$/pages/add/add.wxml" />
         <option value="$PROJECT_DIR$/pages/check/check.json" />
-        <option value="$PROJECT_DIR$/pages/add/add.js" />
         <option value="$PROJECT_DIR$/pages/myGrab/myGrab.json" />
-        <option value="$PROJECT_DIR$/pages/check/check.wxml" />
-        <option value="$PROJECT_DIR$/pages/myGrab/myGrab.wxml" />
-        <option value="$PROJECT_DIR$/pages/order/order.wxml" />
         <option value="$PROJECT_DIR$/app.json" />
-        <option value="$PROJECT_DIR$/pages/check/check.js" />
-        <option value="$PROJECT_DIR$/pages/myGrab/myGrab.js" />
         <option value="$PROJECT_DIR$/pages/info/info.js" />
         <option value="$PROJECT_DIR$/pages/order/order.js" />
+        <option value="$PROJECT_DIR$/pages/myGrab/myGrab.js" />
+        <option value="$PROJECT_DIR$/pages/check/check.js" />
+        <option value="$PROJECT_DIR$/pages/add/add.js" />
+        <option value="$PROJECT_DIR$/pages/check/check.wxml" />
+        <option value="$PROJECT_DIR$/pages/myGrab/myGrab.wxml" />
+        <option value="$PROJECT_DIR$/pages/check/check.wxss" />
+        <option value="$PROJECT_DIR$/pages/myGrab/myGrab.wxss" />
+        <option value="$PROJECT_DIR$/pages/order/order.wxml" />
+        <option value="$PROJECT_DIR$/pages/order/order.wxss" />
       </list>
     </option>
   </component>
@@ -236,21 +243,18 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="487" />
-    <option name="width" value="1443" />
-    <option name="height" value="1031" />
+    <option name="x" value="567" />
+    <option name="y" value="1" />
+    <option name="width" value="1362" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectFilesPane">
-        <option name="show-excluded-files" value="true" />
-        <option name="show-only-loaded-files" value="false" />
-      </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -262,18 +266,6 @@
               <item name="jinghuashui-shifu" type="b2602c69:ProjectViewProjectNode" />
               <item name="jinghuashui-shifu" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jinghuashui-shifu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jinghuashui-shifu" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="check" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jinghuashui-shifu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jinghuashui-shifu" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="info" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jinghuashui-shifu" type="b2602c69:ProjectViewProjectNode" />
@@ -296,7 +288,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectFilesPane">
+        <option name="show-excluded-files" value="true" />
+        <option name="show-only-loaded-files" value="false" />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,15 +400,19 @@
       <workItem from="1540950813969" duration="8185000" />
       <workItem from="1540971074697" duration="763000" />
       <workItem from="1540984461698" duration="871000" />
-      <workItem from="1540991358599" duration="133000" />
+      <workItem from="1540991358599" duration="197000" />
+      <workItem from="1540992117620" duration="1890000" />
+      <workItem from="1541041529018" duration="6136000" />
+      <workItem from="1541243825278" duration="10996000" />
+      <workItem from="1541295531513" duration="2788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161029000" />
+    <option name="totallyTimeSpent" value="182903000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="325" y="0" width="962" height="687" extended-state="0" />
+    <frame x="378" y="1" width="908" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -420,15 +420,15 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50442475" side_tool="true" visible="true" weight="0.03811252" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5082353" side_tool="true" visible="true" weight="0.038043477" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49557522" visible="true" weight="0.03811252" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4917647" visible="true" weight="0.038043477" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18915929" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23058824" />
       <window_info anchor="bottom" id="Pants Console" order="7" />
       <window_info anchor="right" id="Database" order="3" weight="0.3144705" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -453,13 +453,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/component/date/date.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/component/date/date.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -482,13 +475,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/pay/pay.wxss" />
     <entry file="file://$PROJECT_DIR$/pages/pay/pay.json" />
-    <entry file="file://$PROJECT_DIR$/pages/order/order.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weapp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -546,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="17" column="37" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/add/add.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -649,68 +628,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/myGrab/check.js" />
-    <entry file="file://$PROJECT_DIR$/pages/check/check.wxss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/info/info.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/add/add.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="154" column="26" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/check/check.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/check/check.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#view#1;n#i-card#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/order/order.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/order/order.wxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#i-card#0;n#view#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -728,34 +652,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/info/info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order/order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/info/info.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7911">
-          <caret line="293" column="5" selection-start-line="293" selection-start-column="5" selection-end-line="293" selection-end-column="5" />
+        <state relative-caret-position="1755">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="69" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/check/check.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="27">
+          <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/info/info.js">
+    <entry file="file://$PROJECT_DIR$/pages/add/add.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        <state relative-caret-position="297">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/order/order.js">
+    <entry file="file://$PROJECT_DIR$/pages/add/add.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="45" selection-end-column="33" />
+        <state relative-caret-position="238">
+          <caret line="165" column="45" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/check/check.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="67" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#view#1;n#i-card#0;n#view#0;n#view#0;n#view#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/check/check.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="61" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order/order.wxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="70" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#i-card#0;n#view#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/myGrab/myGrab.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="29" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/order/order.wxss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>

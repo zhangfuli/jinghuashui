@@ -22,7 +22,8 @@
         columns: [
           {
             title: '序号',
-            type: 'index'
+            type: 'index',
+            width: 70
           },
           {
             title: '业主姓名',
@@ -31,7 +32,8 @@
           },
           {
             title: '联系方式',
-            key: 'phone'
+            key: 'phone',
+            width: 130
           },
           {
             title: '地址',
@@ -92,6 +94,20 @@
             }
           })
       },
+      delete(phone, index) {
+        var self = this
+        self.$http.post(API.URL + "user/delete",
+          {phone: phone},
+          {emulateJSON: true})
+          .then((response) => {
+            if (response.body.code == 1) {
+              self.$Message.info('删除成功');
+              self.reservation.splice(index, 1);
+            } else {
+              self.$Message.info('删除失败');
+            }
+          })
+      },
       exportData(type) {
         if (type === 1) {
           this.$refs.table.exportCsv({
@@ -113,10 +129,14 @@
           },
           {emulateJSON: true})
           .then((response) => {
-            if(response){
+            if (response.body.code == -1) {
+              self.$Message.info(response.body.message);
+            } else {
               self.$Message.info('预约成功');
             }
-
+          })
+          .catch((response)=>{
+            this.$Message.info('网络请求失败');
           })
       }
     }
