@@ -34,7 +34,8 @@ App({
     })
   },
   globalData: {
-      URL: "https://zflxsr.cn/",
+      // URL: "https://zflxsr.cn/",
+      URL:"https://xiaomifengzaijia.cn/",
       userInfo: null,
       user: null
   }

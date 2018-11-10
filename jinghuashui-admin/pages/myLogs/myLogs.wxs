@@ -1,0 +1,9 @@
+var filter = {
+  changeDate: function (value) {
+    return value.split(' ')[0]
+  }
+}
+// 导出对外暴露的属性
+module.exports = {
+  changeDate: filter.changeDate
+}
