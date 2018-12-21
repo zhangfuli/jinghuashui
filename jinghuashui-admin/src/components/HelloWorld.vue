@@ -121,6 +121,7 @@
         }
       },
       reservation(index) {
+        console.log(index)
         var self = this
         self.$http.post(API.URL + "reservation/create",
           {
@@ -129,6 +130,7 @@
           },
           {emulateJSON: true})
           .then((response) => {
+            console.log(response)
             if (response.body.code == -1) {
               self.$Message.info(response.body.message);
             } else {
